@@ -1,0 +1,22 @@
+{
+  "name": "http_test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "fast-xml-parser": "^4.0.9",
+    "he": "^1.2.0",
+    "properties-reader": "^2.2.0",
+    "react-xml-parser": "^1.1.8",
+    "request": "^2.88.2",
+    "xml-js": "^1.6.11",
+    "xml2js": "^0.4.23"
+  }
+}
