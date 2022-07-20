@@ -12,6 +12,7 @@ SELECT '{mblNo: "' + MBL_NO + '", hblNo: "' + HBL_NO + '", blYy: "' + '' + cast(
 ---
 
 
+### yarn install
 ```
 C:\Users\>npm i -g yarn
 npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.
@@ -32,7 +33,7 @@ info No lockfile found.
 success Saved lockfile.
 Done in 0.07s.
 
-C:\Users\>yarn global add cross-env
+C:\Users\>yarn global add cross-env    --> cross-env package install command
 yarn global v1.22.19
 [1/4] Resolving packages...
 [2/4] Fetching packages...
