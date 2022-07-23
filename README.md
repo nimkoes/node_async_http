@@ -47,4 +47,16 @@ Done in 0.45s.
 
 ```
 
+### add mssql library
+```
+$ yarn global add mssql
+yarn global v1.22.19
+[1/4] Resolving packages...
+[2/4] Fetching packages...
+[3/4] Linking dependencies...
+[4/4] Building fresh packages...
+success Installed "mssql@8.1.2" with binaries:
+      - mssql
+Done in 8.17s.
+```
 
