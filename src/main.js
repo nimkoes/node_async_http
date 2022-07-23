@@ -7,36 +7,35 @@ const PREFIX = 'https://unipass.customs.go.kr:38010/ext/rest/cargCsclPrgsInfoQry
 const API_KEY = properties.get("unipass.api.key");
 
 (async () => {
-    let _set = new Set();
+
     const result = await Promise.all(getRequestUrlListArray());
+
+    let _cargTrcnRelaBsopTpcdSet = new Set();   // 처리구분
+    let _rlbrCnSet = new Set();                 // 반출입내용
 
     result.forEach(elem => {
         let xmlToJson = convert.xml2json(elem.data, {compact: true, spaces: 2});
         let json = JSON.parse(xmlToJson);
 
-        let targetRootPath = json.cargCsclPrgsInfoQryRtnVo.cargCsclPrgsInfoQryVo;
+        let targetRootPath = json.cargCsclPrgsInfoQryRtnVo.cargCsclPrgsInfoDtlQryVo;
         if (!!targetRootPath) {
-            let _csclPrgsStts = getTextOrEmpty(targetRootPath.csclPrgsStts);
+            targetRootPath.forEach(function (elem) {
+                let _cargTrcnRelaBsopTpcd = getTextOrEmpty(elem.cargTrcnRelaBsopTpcd);
+                let _rlbrCn = getTextOrEmpty(elem.rlbrCn);
 
-            /*
-            let _prgsStCd = getTextOrEmpty(targetRootPath.prgsStCd);
-            let _prgsStts = getTextOrEmpty(targetRootPath.prgsStts);
+                if (!_cargTrcnRelaBsopTpcdSet.has(_cargTrcnRelaBsopTpcd)) {
+                    _cargTrcnRelaBsopTpcdSet.add(_cargTrcnRelaBsopTpcd);
+                }
 
-            let data = _csclPrgsStts + "|" + _prgsStCd + "|" + _prgsStts;
-            if (!_map.has(data)) {
-                _map.set(data, getTextOrEmpty(targetRootPath.hblNo));
-            } else {
-                _map.set(data, _map.get(data) + ", " + getTextOrEmpty(targetRootPath.hblNo));
-            }
-            */
-
-            if (!_set.has(_csclPrgsStts)) {
-                _set.add(_csclPrgsStts);
-            }
+                if (!_rlbrCnSet.has(_rlbrCn)) {
+                    _rlbrCnSet.add(_rlbrCn);
+                }
+            });
         }
     });
 
-    console.log(_set);
+    console.log(_cargTrcnRelaBsopTpcdSet);
+    console.log(_rlbrCnSet);
 })();
 
 function getRequestUrlListArray() {
@@ -54,5 +53,5 @@ function getRequestUrlListArray() {
 }
 
 function getTextOrEmpty(path) {
-    return !path ? '' : path._text;
+    return path._text || '';
 }
