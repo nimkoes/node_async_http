@@ -35,7 +35,7 @@ function getRequestData() {
     const requestData = [];
 
     users.forEach(user => {
-        requestData.push({email: user, password: PW, login_type: TP});
+        requestData.push({email: user, password: PW, loginType: TP});
     });
 
     return requestData;
