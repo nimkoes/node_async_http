@@ -35,7 +35,6 @@ async function makeRequests() {
 
         try {
             let url = TALKPLUS_CHANNEL_UPDATE_API + temp['cid'];
-
             const response = await axios.put(url, data, config);
             console.log(response.data);
         } catch (error) {
