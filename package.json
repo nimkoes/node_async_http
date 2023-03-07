@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./src/login.js"
+    "start": "node ./src/tp_ch_upd_category.js"
   },
   "keywords": [],
   "author": "",
